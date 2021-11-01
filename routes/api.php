@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\AuthorizationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +25,14 @@ Route::middleware('auth:sanctum')->get('user', function (Request $request) {
 
 Route::group(['auth:sanctum'], function()
 {
-    Route::post('register',[UserController::class, 'register']);
+    Route::post('register',[AuthorizationController::class, 'register']);
     Route::post('edituser',[UserController::class, 'editUser']);
-    Route::post('login',[UserController::class, 'login']);
-    Route::post('logout',[UserController::class, 'logout']);
-    Route::post('addcountry',[UserController::class, 'addcountry']);
-    Route::post('addrole',[UserController::class, 'addrole']);
-    Route::get('country',[UserController::class, 'getAllCountry']);
-    Route::get('roles',[UserController::class, 'getAllRoles']);
+    Route::post('login',[AuthorizationController::class, 'login']);
+    Route::post('logout',[AuthorizationController::class, 'logout']);
+    Route::post('addcountry',[CountryController::class, 'addcountry']);
+    Route::post('addrole',[RolesController::class, 'addrole']);
+    Route::get('country',[CountryController::class, 'getAllCountry']);
+    Route::get('roles',[RolesController::class, 'getAllRoles']);
     Route::get('getAllUser',[UserController::class, 'getAllUser']);
     Route::get('getCurrentUser',[UserController::class, 'getCurrentUser']);
     Route::post('delete',[UserController::class,'deleteUser']);
